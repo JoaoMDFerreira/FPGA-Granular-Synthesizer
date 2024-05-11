@@ -1,0 +1,159 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Fixed-Point Report for andrew_filter</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style>
+	body { font-family: monospace; }
+	h2 { font-family: Arial, Helvetica, sans-serif; color: #990000; margin-top: 50px; }
+	table,th,td { border: 1px solid black; }
+	table { margin-top: 30px; }
+	th { align: center; font-weight: bold; }
+	tr.h { background-color: #99CCFF; }
+	tr.a { background-color: #EEEEFF; }
+	tr.b { background-color: #FFFFFF; }
+	tr.c { background-color: #FFA500; }
+	tr.a td, tr.b td { border-style: none; }
+	td.left { text-align: left; }
+	td.right { text-align: right; }
+	td.center { text-align: center; }
+	td.bold { font-weight: bold; }
+	pre { padding: 0px; margin: 0px; }
+	span { font-style: italic; }
+	.code, .code tr, .code th, .code td { border: none; border-collapse: collapse; }
+	.padd { padding-left: 5px; }
+	td.cov, th.cov { width: 50px; height: 20px; text-align: center; font-weight: bold; border-right: 2px solid black; cell-spacing: 0px; }
+	td.cov { vertical-align: top; }
+	td.black { color: #000000; font-weight: bold; padding-top: 4px; }
+	td.white { color: #FFFFFF; font-weight: bold; padding-top: 4px; }
+	.code th { font-weight: bold; border-bottom: 2px solid black; }
+</style>
+</head>
+<body>
+<h3>Generated on  2023-07-12 17:33:15</h3>
+<p>The following table shows fixed point instrumentation results</p>
+<h2>Fixed-Point Report <span>andrew_filter<span></h2>
+<TABLE class="code">
+<TR>
+<TH class="cov padd">Simulation Coverage</TH>
+<TH>Code</TH>
+</TR>
+<TR>
+<TD class="cov white" style="background-color: rgb(5,112,9);">100%</TD>
+<TD class="padd"><pre>function [y] = andrew_filter(in,MIDI_CC_FREQ,CC_RES,type) 
+    persistent low; %https://www.mathworks.com/help/hdlcoder/ug/optimize-feedback-loop-design-and-maintain-high-data-precision-for-hdl-code-generation.html
+    persistent band;
+</pre></TD>
+</TR>
+<TR>
+<TD class="cov black" style="background-color: rgb(255,160,118);">Once</TD>
+<TD class="padd"><pre>    if isempty(low);
+        low = 0;
+    end
+    if isempty(band);
+        band = 0;
+    end</pre></TD>
+</TR>
+<TR>
+<TD class="cov white" style="background-color: rgb(5,112,9);">100%</TD>
+<TD class="padd"><pre>
+    
+    loaded = coder.load('MIDI_CC_to_internal_freq.mat');
+    filter_internal_freq = loaded.filter_internal_freq; %%check LUT_from_MIDI_Note.m
+    damp_freq = loaded.damp_freq;
+    
+    freq = filter_internal_freq(MIDI_CC_FREQ+1);
+    
+    res = CC_RES/127.0;
+    
+    damp=min(2.0*(1.0 -res*2^-2), damp_freq(MIDI_CC_FREQ+1));
+    
+    notch = in - damp*band;
+    low   = low + freq*band;
+    high  = notch - low;
+    band  = freq*high + band;
+    switch type
+</pre></TD>
+</TR>
+<TR>
+<TD class="cov black" style="background-color: rgb(178,210,174);">25%</TD>
+<TD class="padd"><pre>        case 1
+            out = 0.5*high;
+        case 3
+            out = 0.5*notch;
+        case 2
+            out = 0.5*band;
+        otherwise
+            out = 0.5*low;</pre></TD>
+</TR>
+<TR>
+<TD class="cov white" style="background-color: rgb(5,112,9);">100%</TD>
+<TD class="padd"><pre>            
+    end
+    notch = in - damp*band;
+    low   = low + freq*band;
+    high  = notch - low;
+    band  = freq*high + band;
+    switch type
+</pre></TD>
+</TR>
+<TR>
+<TD class="cov black" style="background-color: rgb(178,210,174);">25%</TD>
+<TD class="padd"><pre>        case 1
+            y = out + 0.5*high;
+        case 3
+            y = out + 0.5*notch;
+        case 2
+            y = out + 0.5*band;
+        otherwise
+            y = out + 0.5*low;</pre></TD>
+</TR>
+<TR>
+<TD class="cov white" style="background-color: rgb(5,112,9);">100%</TD>
+<TD class="padd"><pre>
+    end
+
+    y = floor(y);
+end</pre></TD>
+</TR>
+</TABLE>
+<TABLE><TR class="h"><th>Variable Name</th><th>Type</th><th>Sim Min</th><th>Sim Max</th><th>Static Min</th><th>Static Max</th><th>Whole Number</th><th>ProposedType <BR /> (Best For WL = 16)</th></TR><TR class="a">
+<TD class="left">CC_RES</TD><TD class="left">double</TD><TD class="right">0</TD><TD class="right">127</TD><TD class="right"></TD><TD class="right"></TD><TD class="left">Yes</TD><TD class="left">numerictype(0, 7, 0)</TD></TR>
+<TR class="b">
+<TD class="left">MIDI_CC_FREQ</TD><TD class="left">double</TD><TD class="right">0</TD><TD class="right">127</TD><TD class="right"></TD><TD class="right"></TD><TD class="left">Yes</TD><TD class="left">numerictype(0, 7, 0)</TD></TR>
+<TR class="c">
+<TD class="left">band</TD><TD class="left">double</TD><TD class="right">-32311.663196332738</TD><TD class="right">34925.41665146108</TD><TD class="right"></TD><TD class="right"></TD><TD class="left">No</TD><TD class="left">numerictype(1, 16, -1)</TD></TR>
+<TR class="b">
+<TD class="left">damp</TD><TD class="left">double</TD><TD class="right">1.2326752784371549</TD><TD class="right">2</TD><TD class="right"></TD><TD class="right"></TD><TD class="left">No</TD><TD class="left">numerictype(0, 16, 14)</TD></TR>
+<TR class="a">
+<TD class="left">damp_freq</TD><TD class="left">double 1 x 128 </TD><TD class="right">1.2326752784371549</TD><TD class="right">2</TD><TD class="right"></TD><TD class="right"></TD><TD class="left">No</TD><TD class="left">numerictype(0, 16, 14)</TD></TR>
+<TR class="b">
+<TD class="left">filter_internal_freq</TD><TD class="left">double 1 x 128 </TD><TD class="right">0.0005351047813369359</TD><TD class="right">1.1166838558950394</TD><TD class="right"></TD><TD class="right"></TD><TD class="left">No</TD><TD class="left">numerictype(0, 16, 15)</TD></TR>
+<TR class="a">
+<TD class="left">freq</TD><TD class="left">double</TD><TD class="right">0.0005351047813369359</TD><TD class="right">1.1166838558950394</TD><TD class="right"></TD><TD class="right"></TD><TD class="left">No</TD><TD class="left">numerictype(0, 16, 15)</TD></TR>
+<TR class="c">
+<TD class="left">high</TD><TD class="left">double</TD><TD class="right">-60151.40516233119</TD><TD class="right">56730.470785388075</TD><TD class="right"></TD><TD class="right"></TD><TD class="left">No</TD><TD class="left">numerictype(1, 16, -1)</TD></TR>
+<TR class="a">
+<TD class="left">in</TD><TD class="left">double</TD><TD class="right">-32757.127079136506</TD><TD class="right">32765.90295982157</TD><TD class="right"></TD><TD class="right"></TD><TD class="left">No</TD><TD class="left">numerictype(1, 16, 0)</TD></TR>
+<TR class="b">
+<TD class="left">loaded</TD><TD class="left">struct</TD><TD class="right"></TD><TD class="right"></TD><TD class="right"></TD><TD class="right"></TD><TD class="left"></TD><TD class="left"></TD></TR>
+<TR class="b">
+<TD class="left">loaded.damp_freq</TD><TD class="left">double 1 x 128 </TD><TD class="right">1.2326752784371549</TD><TD class="right">2</TD><TD class="right"></TD><TD class="right"></TD><TD class="left">No</TD><TD class="left">numerictype(0, 16, 14)</TD></TR>
+<TR class="b">
+<TD class="left">loaded.filter_internal_freq</TD><TD class="left">double 1 x 128 </TD><TD class="right">0.0005351047813369359</TD><TD class="right">1.1166838558950394</TD><TD class="right"></TD><TD class="right"></TD><TD class="left">No</TD><TD class="left">numerictype(0, 16, 15)</TD></TR>
+<TR class="c">
+<TD class="left">low</TD><TD class="left">double</TD><TD class="right">-42841.7216706145</TD><TD class="right">49985.56701657598</TD><TD class="right"></TD><TD class="right"></TD><TD class="left">No</TD><TD class="left">numerictype(1, 16, -1)</TD></TR>
+<TR class="c">
+<TD class="left">notch</TD><TD class="left">double</TD><TD class="right">-55979.872226648375</TD><TD class="right">68487.43844321661</TD><TD class="right"></TD><TD class="right"></TD><TD class="left">No</TD><TD class="left">numerictype(1, 16, -2)</TD></TR>
+<TR class="c">
+<TD class="left">out</TD><TD class="left">double</TD><TD class="right">-27989.936113324187</TD><TD class="right">34243.719221608306</TD><TD class="right"></TD><TD class="right"></TD><TD class="left">No</TD><TD class="left">numerictype(1, 16, -1)</TD></TR>
+<TR class="b">
+<TD class="left">res</TD><TD class="left">double</TD><TD class="right">0</TD><TD class="right">1</TD><TD class="right"></TD><TD class="right"></TD><TD class="left">No</TD><TD class="left">numerictype(0, 16, 15)</TD></TR>
+<TR class="a">
+<TD class="left">type</TD><TD class="left">double</TD><TD class="right">0</TD><TD class="right">3</TD><TD class="right"></TD><TD class="right"></TD><TD class="left">Yes</TD><TD class="left">numerictype(0, 2, 0)</TD></TR>
+<TR class="c">
+<TD class="left">y</TD><TD class="left">double</TD><TD class="right">-48295</TD><TD class="right">38426.585370044944</TD><TD class="right"></TD><TD class="right"></TD><TD class="left">No</TD><TD class="left">numerictype(1, 16, -1)</TD></TR>
+</TABLE>
+
+</body>
+</html>

@@ -1,0 +1,4 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "Z_Turn_Board_Lib_Footprint")(type "KiCad")(uri "${KIPRJMOD}/Z_Turn_Board_Lib_Footprint.pretty")(options "")(descr ""))
+)

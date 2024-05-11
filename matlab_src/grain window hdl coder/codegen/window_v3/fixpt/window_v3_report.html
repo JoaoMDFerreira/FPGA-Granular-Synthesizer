@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Fixed-Point Report for window_v3</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style>
+	body { font-family: monospace; }
+	h2 { font-family: Arial, Helvetica, sans-serif; color: #990000; margin-top: 50px; }
+	table,th,td { border: 1px solid black; }
+	table { margin-top: 30px; }
+	th { align: center; font-weight: bold; }
+	tr.h { background-color: #99CCFF; }
+	tr.a { background-color: #EEEEFF; }
+	tr.b { background-color: #FFFFFF; }
+	tr.c { background-color: #FFA500; }
+	tr.a td, tr.b td { border-style: none; }
+	td.left { text-align: left; }
+	td.right { text-align: right; }
+	td.center { text-align: center; }
+	td.bold { font-weight: bold; }
+	pre { padding: 0px; margin: 0px; }
+	span { font-style: italic; }
+	.code, .code tr, .code th, .code td { border: none; border-collapse: collapse; }
+	.padd { padding-left: 5px; }
+	td.cov, th.cov { width: 50px; height: 20px; text-align: center; font-weight: bold; border-right: 2px solid black; cell-spacing: 0px; }
+	td.cov { vertical-align: top; }
+	td.black { color: #000000; font-weight: bold; padding-top: 4px; }
+	td.white { color: #FFFFFF; font-weight: bold; padding-top: 4px; }
+	.code th { font-weight: bold; border-bottom: 2px solid black; }
+</style>
+</head>
+<body>
+<h3>Generated on  2024-02-04 21:20:42</h3>
+<p>The following table shows fixed point instrumentation results</p>
+<h2>Fixed-Point Report <span>window_v3<span></h2>
+<TABLE class="code">
+<TR>
+<TH class="cov padd">Simulation Coverage</TH>
+<TH>Code</TH>
+</TR>
+<TR>
+<TD class="cov white" style="background-color: rgb(5,112,9);">100%</TD>
+<TD class="padd"><pre>function out = window_v3(CC_attack, CC_release,current,size,in)
+    attack = floor((CC_attack+1)/255 *size)+1;
+    release = floor((CC_release+1)/255 *size)+1;
+    sustain = size - attack - release;
+    
+</pre></TD>
+</TR>
+<TR>
+<TD class="cov black" style="background-color: rgb(180,211,176);">24%</TD>
+<TD class="padd"><pre>    if current &lt;= attack
+        out = (current-1)/attack *in;
+</pre></TD>
+</TR>
+<TR>
+<TD class="cov white" style="background-color: rgb(115,174,115);">52%</TD>
+<TD class="padd"><pre>    elseif current &lt; attack + sustain
+        out = in;
+</pre></TD>
+</TR>
+<TR>
+<TD class="cov black" style="background-color: rgb(180,211,176);">24%</TD>
+<TD class="padd"><pre>    else
+        out = (1 - (current - attack - sustain)/release) *in;
+    end</pre></TD>
+</TR>
+<TR>
+<TD class="cov white" style="background-color: rgb(5,112,9);">100%</TD>
+<TD class="padd"><pre>
+end</pre></TD>
+</TR>
+</TABLE>
+<TABLE><TR class="h"><th>Variable Name</th><th>Type</th><th>Sim Min</th><th>Sim Max</th><th>Static Min</th><th>Static Max</th><th>Whole Number</th><th>ProposedType <BR /> (Best For WL = 16)</th></TR><TR class="a">
+<TD class="left">CC_attack</TD><TD class="left">double</TD><TD class="right">0</TD><TD class="right">120</TD><TD class="right"></TD><TD class="right"></TD><TD class="left">Yes</TD><TD class="left">numerictype(0, 7, 0)</TD></TR>
+<TR class="b">
+<TD class="left">CC_release</TD><TD class="left">double</TD><TD class="right">0</TD><TD class="right">120</TD><TD class="right"></TD><TD class="right"></TD><TD class="left">Yes</TD><TD class="left">numerictype(0, 7, 0)</TD></TR>
+<TR class="a">
+<TD class="left">attack</TD><TD class="left">double</TD><TD class="right">1</TD><TD class="right">22303</TD><TD class="right"></TD><TD class="right"></TD><TD class="left">Yes</TD><TD class="left">numerictype(0, 15, 0)</TD></TR>
+<TR class="b">
+<TD class="left">current</TD><TD class="left">double</TD><TD class="right">1</TD><TD class="right">47001</TD><TD class="right"></TD><TD class="right"></TD><TD class="left">Yes</TD><TD class="left">numerictype(0, 16, 0)</TD></TR>
+<TR class="a">
+<TD class="left">in</TD><TD class="left">double</TD><TD class="right">-32766.999999998614</TD><TD class="right">32766.999999998156</TD><TD class="right"></TD><TD class="right"></TD><TD class="left">No</TD><TD class="left">numerictype(1, 16, 0)</TD></TR>
+<TR class="b">
+<TD class="left">out</TD><TD class="left">double</TD><TD class="right">-32766.999952809816</TD><TD class="right">32766.999955083706</TD><TD class="right"></TD><TD class="right"></TD><TD class="left">No</TD><TD class="left">numerictype(1, 16, 0)</TD></TR>
+<TR class="a">
+<TD class="left">release</TD><TD class="left">double</TD><TD class="right">1</TD><TD class="right">22303</TD><TD class="right"></TD><TD class="right"></TD><TD class="left">Yes</TD><TD class="left">numerictype(0, 15, 0)</TD></TR>
+<TR class="b">
+<TD class="left">size</TD><TD class="left">double</TD><TD class="right">1</TD><TD class="right">47001</TD><TD class="right"></TD><TD class="right"></TD><TD class="left">Yes</TD><TD class="left">numerictype(0, 16, 0)</TD></TR>
+<TR class="a">
+<TD class="left">sustain</TD><TD class="left">double</TD><TD class="right">-1</TD><TD class="right">46631</TD><TD class="right"></TD><TD class="right"></TD><TD class="left">Yes</TD><TD class="left">numerictype(1, 17, 0)</TD></TR>
+</TABLE>
+
+</body>
+</html>

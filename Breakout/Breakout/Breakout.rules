@@ -1,0 +1,113 @@
+
+(rules PCB Breakout
+  (snap_angle 
+    fortyfive_degree
+  )
+  (autoroute_settings
+    (fanout off)
+    (autoroute on)
+    (postroute on)
+    (vias on)
+    (via_costs 50)
+    (plane_via_costs 5)
+    (start_ripup_costs 100)
+    (start_pass_no 1573)
+    (layer_rule F.Cu
+      (active on)
+      (preferred_direction horizontal)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 2.1)
+    )
+    (layer_rule B.Cu
+      (active on)
+      (preferred_direction vertical)
+      (preferred_direction_trace_costs 1.0)
+      (against_preferred_direction_trace_costs 1.9)
+    )
+  )
+  (rule
+    (width 250.0)
+    (clearance 200.2)
+    (clearance -0.1 (type smd_to_turn_gap))
+    (clearance 200.2 (type smd))
+    (clearance 200.2 (type "kicad_default"))
+    (clearance 200.2 (type Power))
+    (clearance 200.2 (type kicad))
+  )
+  (padstack "Via[0-1]_800:400_um"
+    (shape
+      (circle F.Cu 800.0 0.0 0.0)
+    )
+    (shape
+      (circle B.Cu 800.0 0.0 0.0)
+    )
+    (attach off)
+  )
+  (via 
+    "Via[0-1]_800:400_um-Power" "Via[0-1]_800:400_um" Power
+  )
+  (via 
+    "Via[0-1]_800:400_um" "Via[0-1]_800:400_um" default
+  )
+  (via 
+    "Via[0-1]_800:400_um-kicad_default" "Via[0-1]_800:400_um" "kicad_default"
+  )
+  (via_rule
+    Power "Via[0-1]_800:400_um-Power"
+  )
+  (via_rule
+    default "Via[0-1]_800:400_um"
+  )
+  (via_rule
+    "kicad_default" "Via[0-1]_800:400_um-kicad_default"
+  )
+  (class default
+    (clearance_class default)
+    (via_rule default)
+    (rule
+      (width 250.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class "kicad_default"
+    "Net-(D1-K)" "Net-(D1-A)" LED1 LED2 LED3 LED4 LED5 LED6
+    LED7 LED8 "PMOD1_1" "PMOD1_2" "PMOD1_3" "PMOD1_4" "PMOD1_7" "PMOD1_8"
+    "PMOD1_9" "PMOD1_10" "unconnected-(J2-Pad1)" "unconnected-(J2-Pad2)" "unconnected-(J2-Pad3)" "Net-(J2-Pad4)" "PMOD2_1" "PMOD2_2"
+    "PMOD2_3" "PMOD2_4" "PMOD2_7" "PMOD2_8" "PMOD2_9" "PMOD2_10" BCLK DATA
+    LRCLK "GPIO_1" "GPIO_2" "GPIO_3" "GPIO_4" "GPIO_5" "GPIO_6" "GPIO_7"
+    "GPIO_8" "GPIO_9" "GPIO_10" "GPIO_11" "GPIO_12" "GPIO_13" "GPIO_14" "GPIO_15"
+    "GPIO_16" "GPIO_17" "GPIO_18" "GPIO_19" "GPIO_20" "GPIO_21" "GPIO_22" "GPIO_23"
+    "GPIO_24" "GPIO_25" "GPIO_26" "GPIO_27" "GPIO_28" "XADC_INP0" "XADC_INN0" "XADC_VCC"
+    "MIDI_IN" "unconnected-(U1-Pad3)" "unconnected-(U2A-VDD18_KEY_BACKUP-PadCN1_5)" "unconnected-(U2A-JTAG_TCK-PadCN1_6)" "unconnected-(U2A-JTAG_TMS-PadCN1_8)" "unconnected-(U2A-IO_L11N_T1_13-PadCN1_9)" "unconnected-(U2A-JTAG_TDI-PadCN1_10)" "unconnected-(U2A-JTAG_TDO-PadCN1_12)"
+    "unconnected-(U2A-JTAG_NTRST-PadCN1_14)" "unconnected-(U2A-IO_L11P_T1_13-PadCN1_7)" "unconnected-(U2A-IO_L20P_T3_34-PadCN1_71)" "unconnected-(U2A-IO_L12P_T1_13-PadCN1_11)" "unconnected-(U2A-IO_L21N_T3_34-PadCN1_73)" "unconnected-(U2A-IO_L12N_T1_13-PadCN1_13)" "unconnected-(U2A-IO_L22P_T3_34-PadCN1_75)" "unconnected-(U2A-VDDIO_13_PL-PadCN1_15)"
+    "unconnected-(U2A-IO_L22N_T3_34-PadCN1_77)" "unconnected-(U2A-IO_L13P_T2_13-PadCN1_17)" "unconnected-(U2A-IO_L23P_T3_34-PadCN1_79)" "unconnected-(U2A-IO_L13N_T2_13-PadCN1_19)" "unconnected-(U2B-DXP_0-PadCN2_6)" "unconnected-(U2B-DXN_0-PadCN2_8)" "unconnected-(U2A-IO_L15P_T2_13-PadCN1_21)" "unconnected-(U2A-IO_L15N_T2_13-PadCN1_23)"
+    "unconnected-(U2A-IO_L2P_T0_34-PadCN1_27)" "unconnected-(U2A-IO_L2N_T0_34-PadCN1_29)" "unconnected-(U2A-IO_L4P_T0_34-PadCN1_31)" "unconnected-(U2A-IO_L4N_T0_34-PadCN1_33)" "unconnected-(U2A-IO_L6P_T0_34-PadCN1_37)" "unconnected-(U2A-IO_L6N_T0_34-PadCN1_39)" "unconnected-(U2A-IO_L8P_T1_34-PadCN1_41)" "unconnected-(U2A-IO_L8N_T1_34-PadCN1_43)"
+    "unconnected-(U2A-IO_L11P_T1_34-PadCN1_45)" "unconnected-(U2A-IO_L11N_T1_34-PadCN1_47)" "unconnected-(U2A-VDDIO_34_PL-PadCN1_49)" "unconnected-(U2A-IO_L9P_T1_34-PadCN1_51)" "unconnected-(U2A-IO_L15P_T2_34-PadCN1_53)" "unconnected-(U2A-IO_L12P_T1_34-PadCN1_55)" "unconnected-(U2A-IO_L12N_T1_34-PadCN1_57)" "unconnected-(U2B-VDDIO_35_PL-PadCN2_51)"
+    "unconnected-(U2A-IO_L14P_T2_34-PadCN1_59)" "unconnected-(U2A-IO_L14N_T2_34-PadCN1_61)" "unconnected-(U2A-IO_L16P_T2_34-PadCN1_63)" "unconnected-(U2A-IO_L16N_T2_34-PadCN1_65)" "unconnected-(U2A-IO_L18N_T2_34-PadCN1_69)" "unconnected-(U2B-PS_MIO10_500-PadCN2_12)" "unconnected-(U2B-PS_MIO11_500-PadCN2_14)" "unconnected-(U2B-PS_MIO14_500-PadCN2_16)"
+    "unconnected-(U2B-PS_MIO15_500-PadCN2_18)" "unconnected-(U2B-IO_L2P_T0_35-PadCN2_22)" "unconnected-(U2B-IO_L2N_T0_35-PadCN2_24)" "unconnected-(U2B-IO_L23N_T3_35-PadCN2_79)" "unconnected-(U2B-IO_L4P_T0_35-PadCN2_26)" "unconnected-(U2B-IO_L4N_T0_35-PadCN2_28)" "unconnected-(U2B-IO_L6P_T0_35-PadCN2_32)" "unconnected-(U2B-IO_L6N_T0_35-PadCN2_34)"
+    "unconnected-(U2B-IO_L8P_T1_35-PadCN2_36)" "unconnected-(U2B-IO_L8N_T1_35-PadCN2_38)" "unconnected-(U2B-IO_L10P_T1_35-PadCN2_42)" "unconnected-(U2B-IO_L10N_T1_35-PadCN2_44)" "unconnected-(U2B-IO_L12P_T1_35-PadCN2_46)" "unconnected-(U2B-IO_L12N_T1_35-PadCN2_48)" "unconnected-(U2B-IO_L14P_T2_35-PadCN2_52)" "unconnected-(U2B-IO_L14N_T2_35-PadCN2_54)"
+    "unconnected-(U2B-IO_L16P_T2_35-PadCN2_56)" "unconnected-(U2B-IO_L16N_T2_35-PadCN2_58)" "unconnected-(U2B-IO_L18P_T2_35-PadCN2_62)" "unconnected-(U2B-IO_L18N_T2_35-PadCN2_64)" "unconnected-(U2B-IO_L20P_T3_35-PadCN2_66)" "unconnected-(U2B-IO_L20N_T3_35-PadCN2_68)" "unconnected-(U2B-IO_L22P_T3_35-PadCN2_72)" "unconnected-(U2B-IO_L22N_T3_35-PadCN2_74)"
+    "unconnected-(U2B-IO_L24P_T3_35-PadCN2_76)" "unconnected-(U2B-IO_L24N_T3_35-PadCN2_78)"
+    (clearance_class "kicad_default")
+    (via_rule "kicad_default")
+    (rule
+      (width 250.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+  (class Power
+    GND +3.3V +5V
+    (clearance_class Power)
+    (via_rule Power)
+    (rule
+      (width 500.0)
+    )
+    (circuit 
+      (use_layer F.Cu B.Cu)
+    )
+  )
+)

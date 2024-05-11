@@ -1,0 +1,13 @@
+
+
+Messages: 
+
+File: C:\Users\Asurans\Downloads\fac\tese\hdl coder matlab\andrew_filter.m, line : 9, column : 16. Could not find range for expression: 'in - damp*band'
+File: C:\Users\Asurans\Downloads\fac\tese\hdl coder matlab\andrew_filter.m, line : 10, column : 17. Could not find range for expression: 'low + freq*band'
+File: C:\Users\Asurans\Downloads\fac\tese\hdl coder matlab\andrew_filter.m, line : 11, column : 19. Could not find range for expression: 'notch - low'
+File: C:\Users\Asurans\Downloads\fac\tese\hdl coder matlab\andrew_filter.m, line : 12, column : 30. Could not find range for expression: 'fi_signed(freq*high + band) - drive*band*band*band'
+File: C:\Users\Asurans\Downloads\fac\tese\hdl coder matlab\andrew_filter.m, line : 15, column : 22. Could not find range for expression: '0.5*high'
+File: C:\Users\Asurans\Downloads\fac\tese\hdl coder matlab\andrew_filter.m, line : 17, column : 22. Could not find range for expression: '0.5*notch'
+File: C:\Users\Asurans\Downloads\fac\tese\hdl coder matlab\andrew_filter.m, line : 19, column : 22. Could not find range for expression: '0.5*band'
+File: C:\Users\Asurans\Downloads\fac\tese\hdl coder matlab\andrew_filter.m, line : 21, column : 22. Could not find range for expression: 'fi(0.5, 0, 14, 14, fm)*peak'
+File: C:\Users\Asurans\Downloads\fac\tese\hdl coder matlab\andrew_filter.m, line : 23, column : 22. Could not find range for expression: '0.5*low'

@@ -1,0 +1,5 @@
+
+Warnings: 
+
+File: C:\Users\Asurans\Downloads\fac\tese\window hdl coder\ASR_GEN.m, line : 68, column : 21. The expression 'ASR_OUT = 0;' was not executed during simulation. Consider using a more thorough testbench.
+File: C:\Users\Asurans\Downloads\fac\tese\window hdl coder\ASR_GEN.m, line : 69, column : 19. The expression 'state = 0;' was not executed during simulation. Consider using a more thorough testbench.

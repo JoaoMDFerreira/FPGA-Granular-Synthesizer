@@ -1,0 +1,12 @@
+Comment,Designator,Footprint,LCSC Part Number
+1N4148,D1,Device:D,C402212
+3mm LED,"D2, D3, D4, D5, D6, D7, D8, D9",Device:LED,C7433021
+2x06 Right Angle Pin Header 2.54mm,"J1, J3",Z_Turn_Board_Lib:PMOD_Conn,C5383091
+DIN-5_180Degree_Female,J2,Connector:DIN-5_180degree,C2939346
+1x06 Right Angle Pin Header 2.54mm,J4,Connector:Conn_01x06_Pin,C19190480
+1x32 Straight Pin Header 2.54mm,J5,Connector:Conn_01x31_Pin,C7430388
+1x04 Right Angle Pin Header 2.54mm,J6,Connector:Conn_01x04_Pin,C2935929
+02x40 Straight Pin Header 1.27mm,"J7, J8",Connector_Generic:Conn_02x40_Odd_Even,C545212
+220R,R1,Device:R_Small,C1367947
+510R,R2,Device:R_Small,C1396546
+H11L1,U1,Isolator:H11L1,C78588

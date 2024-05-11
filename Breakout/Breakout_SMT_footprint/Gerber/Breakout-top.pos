@@ -1,0 +1,26 @@
+### Footprint positions - created on Thu Jan 11 09:45:48 2024 ###
+### Printed by KiCad version 7.0.10
+## Unit = mm, Angle = deg.
+## Side : top
+# Ref     Val                     Package                                                PosX       PosY       Rot  Side
+D1        1N4148                  D_DO-35_SOD27_P7.62mm_Horizontal                    69.3420   -93.9800  -90.0000  top
+D2        LED                     LED_D3.0mm                                         106.9340   -96.7740  180.0000  top
+D3        LED                     LED_D3.0mm                                         112.0090   -96.7740  180.0000  top
+D4        LED                     LED_D3.0mm                                         117.0940   -96.7740  180.0000  top
+D5        LED                     LED_D3.0mm                                         122.1740   -96.7740  180.0000  top
+D6        LED                     LED_D3.0mm                                         127.2540   -96.7740  180.0000  top
+D7        LED                     LED_D3.0mm                                         132.3340   -96.7740  180.0000  top
+D8        LED                     LED_D3.0mm                                         137.4140   -96.7740  180.0000  top
+D9        LED                     LED_D3.0mm                                         142.4940   -96.7740  180.0000  top
+J1        ~                       PMOD                                               108.9660  -110.0420   90.0000  top
+J2        DIN-5_180Degree_Female  MIDI_DIN5                                           54.6228  -101.9970    0.0000  top
+J3        ~                       PMOD                                               135.6360  -109.9820   90.0000  top
+J4        DAC                     PinHeader_1x06_P2.54mm_Horizontal                   86.6140  -106.7500  -90.0000  top
+J5        GPIO_Header             PinHeader_1x32_P2.54mm_Vertical                     65.1510   -21.0820   90.0000  top
+J6        XADC_Header             PinSocket_1x04_P2.54mm_Vertical                     48.2600   -20.9550   90.0000  top
+J7        Conn_02x40_Odd_Even     2x40_Inverted                                       95.8312   -33.1366   90.0000  top
+J8        Conn_02x40_Odd_Even     2x40_Inverted                                       95.8312   -85.9686   90.0000  top
+R1        220                     R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal    66.6750  -100.9650   90.0000  top
+R2        510                     R_Axial_DIN0204_L3.6mm_D1.6mm_P5.08mm_Horizontal    83.5660   -98.9330   90.0000  top
+U1        H11L1                   DIP-6_W7.62mm_Socket_LongPads                       72.4000   -93.9700    0.0000  top
+## End
